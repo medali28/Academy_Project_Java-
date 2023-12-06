@@ -8,11 +8,9 @@ import java.util.Comparator;
 import java.util.List;
 import Exception.*;
 public class SocieteArrayList implements IGestion<Employe> {
-    List<Employe> employeList;
+    List<Employe> employeList  = new ArrayList<>();
 
-    public SocieteArrayList() {
-        this.employeList = new ArrayList<>();
-    }
+
 
     @Override
     public void ajouterEmploye(Employe e)  throws ExcisteException {
@@ -60,22 +58,24 @@ public class SocieteArrayList implements IGestion<Employe> {
         Collections.sort(employeList);
     }
 
+
+
+
+    Comparator<Employe> comparatorDepartement = new Comparator<Employe>() {
+        @Override
+        public int compare(Employe e1, Employe e2) {
+            return  e1.getDepartement().compareTo(e2.getDepartement())  ;
+        }
+    };
+    Comparator<Employe> comparatorGrade = new Comparator<Employe>() {
+        @Override
+        public int compare(Employe e1, Employe e2) {
+            return e1.getGrade() - e2.getGrade()  ;
+        }
+    };
+
     @Override
     public void trierEmployeParNomDepartementEtGrade() {
-        Comparator<Employe> comparatorDepartement = new Comparator<Employe>() {
-            @Override
-            public int compare(Employe e1, Employe e2) {
-
-                return  e1.getDepartement().compareTo(e2.getDepartement())  ;
-            }
-        };
-        Comparator<Employe> comparatorGrade = new Comparator<Employe>() {
-            @Override
-            public int compare(Employe e1, Employe e2) {
-                return e1.getGrade() - e2.getGrade()  ;
-            }
-        };
-
         employeList.sort(comparatorDepartement.thenComparing(comparatorGrade));
 
 

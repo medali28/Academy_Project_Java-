@@ -1,8 +1,9 @@
 package entities;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Employe implements Comparable<Employe> {
+public class Employe implements Comparable<Employe>  {
     private int id ;
     private String nom ;
     private String prenom ;
@@ -59,6 +60,8 @@ public class Employe implements Comparable<Employe> {
     public void setGrade(int grade) {
         this.grade = grade;
     }
+
+
 
 
     @Override
